@@ -16,6 +16,7 @@ const initialState = () => {
       scroll: INITIAL_UI_STATE.scroll,
       view: '',
       mainMenuOptions: [],
+      nodeInfoComponent: () => <></>,
       editorMode: 'EXPLORABLE_READONLY',
       mode: getStartingMode('EXPLORABLE_READONLY'),
       iconCategoriesState: [],
@@ -36,6 +37,9 @@ const initialState = () => {
         },
         setMainMenuOptions: (mainMenuOptions) => {
           set({ mainMenuOptions });
+        },
+        setNodeInfoComponent: (nodeInfoComponent) => {
+          set({ nodeInfoComponent });
         },
         setEditorMode: (mode) => {
           set({ editorMode: mode, mode: getStartingMode(mode) });

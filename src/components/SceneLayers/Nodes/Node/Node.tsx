@@ -11,6 +11,7 @@ import { ViewItem } from 'src/types';
 import { useModelItem } from 'src/hooks/useModelItem';
 import { ExpandableLabel } from 'src/components/Label/ExpandableLabel';
 import { MarkdownEditor } from 'src/components/MarkdownEditor/MarkdownEditor';
+import { useNodeInfoComponent } from 'src/hooks/useNodeInfoComponent';
 
 interface Props {
   node: ViewItem;
@@ -20,6 +21,7 @@ interface Props {
 export const Node = ({ node, order }: Props) => {
   const modelItem = useModelItem(node.id);
   const { iconComponent } = useIcon(modelItem.icon);
+  const NodeInfoComponent = useNodeInfoComponent(node.id);
 
   const position = useMemo(() => {
     return getTilePosition({
@@ -84,6 +86,9 @@ export const Node = ({ node, order }: Props) => {
             {iconComponent}
           </Box>
         )}
+        <NodeInfoComponent
+          item={modelItem}
+        />
       </Box>
     </Box>
   );

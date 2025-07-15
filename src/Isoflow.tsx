@@ -16,6 +16,7 @@ import { useInitialDataManager } from 'src/hooks/useInitialDataManager';
 const App = ({
   initialData,
   mainMenuOptions = MAIN_MENU_OPTIONS,
+  nodeInfoComponent = () => <></>,
   width = '100%',
   height = '100%',
   onModelUpdated,
@@ -40,6 +41,7 @@ const App = ({
   useEffect(() => {
     uiStateActions.setEditorMode(editorMode);
     uiStateActions.setMainMenuOptions(mainMenuOptions);
+    uiStateActions.setNodeInfoComponent(nodeInfoComponent);
   }, [editorMode, uiStateActions, mainMenuOptions]);
 
   useEffect(() => {

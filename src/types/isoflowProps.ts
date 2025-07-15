@@ -1,5 +1,5 @@
 import type { EditorModeEnum, MainMenuOptions } from './common';
-import type { Model } from './model';
+import type { Model, ModelItem, ViewItem } from './model';
 import type { RendererProps } from './rendererProps';
 
 export type InitialData = Model & {
@@ -7,9 +7,14 @@ export type InitialData = Model & {
   view?: string;
 };
 
+export type NodeInfoComponentProps = {
+  item: ModelItem;
+}
+
 export interface IsoflowProps {
   initialData?: InitialData;
   mainMenuOptions?: MainMenuOptions;
+  nodeInfoComponent?: (props: NodeInfoComponentProps) => JSX.Element;
   onModelUpdated?: (Model: Model) => void;
   width?: number | string;
   height?: number | string;
