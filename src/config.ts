@@ -75,7 +75,7 @@ export const MAX_ZOOM = 1;
 export const TRANSFORM_ANCHOR_SIZE = 30;
 export const TRANSFORM_CONTROLS_COLOR = '#0392ff';
 export const INITIAL_DATA: InitialData = {
-  title: 'Untitled',
+  title: '',
   version: '',
   icons: [],
   colors: [DEFAULT_COLOR],
