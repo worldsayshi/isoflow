@@ -134,7 +134,7 @@ export type LayerOrderingAction = keyof typeof LayerOrderingActionOptions;
 export interface UiState {
   view: string;
   mainMenuOptions: MainMenuOptions;
-  nodeInfoComponent: (props: { item: ModelItem }) => JSX.Element;
+  nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element;
   editorMode: keyof typeof EditorModeEnum;
   iconCategoriesState: IconCollectionState[];
   mode: Mode;
@@ -152,7 +152,7 @@ export interface UiState {
 export interface UiStateActions {
   setView: (view: string) => void;
   setMainMenuOptions: (options: MainMenuOptions) => void;
-  setNodeInfoComponent: (nodeInfoComponent: (props: { item: ModelItem }) => JSX.Element) => void;
+  setNodeIndicatorComponent: (nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element) => void;
   setEditorMode: (mode: keyof typeof EditorModeEnum) => void;
   setIconCategoriesState: (iconCategoriesState: IconCollectionState[]) => void;
   resetUiState: () => void;

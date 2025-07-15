@@ -7,14 +7,14 @@ export type InitialData = Model & {
   view?: string;
 };
 
-export type NodeInfoComponentProps = {
+export type NodeIndicatorComponentProps = {
   item: ModelItem;
 }
 
 export interface IsoflowProps {
   initialData?: InitialData;
   mainMenuOptions?: MainMenuOptions;
-  nodeInfoComponent?: (props: NodeInfoComponentProps) => JSX.Element;
+  nodeIndicatorComponent?: (props: NodeIndicatorComponentProps) => JSX.Element;
   onModelUpdated?: (Model: Model) => void;
   width?: number | string;
   height?: number | string;
