@@ -12,6 +12,50 @@ import { UiOverlay } from 'src/components/UiOverlay/UiOverlay';
 import { UiStateProvider, useUiStateStore } from 'src/stores/uiStateStore';
 import { INITIAL_DATA, MAIN_MENU_OPTIONS } from 'src/config';
 import { useInitialDataManager } from 'src/hooks/useInitialDataManager';
+import { useScene } from './hooks/useScene';
+
+interface InnerAppProps {
+  width: number | string;
+  height: number | string;
+  onModelUpdated?: IsoflowProps['onModelUpdated'];
+  renderer: IsoflowProps['renderer'];
+}
+
+// The inner app exists so that the the scene is ready before using the useScene hook
+const InnerApp = ({
+  width,
+  height,
+  onModelUpdated,
+  renderer,
+}: InnerAppProps) => {
+  const scene = useScene();
+  const model = useModelStore((state) => {
+    return modelFromModelStore(state);
+  });
+
+  useEffect(() => {
+    if (!onModelUpdated) return;
+
+    onModelUpdated(model, {scene});
+  }, [model, onModelUpdated]);
+  return (
+    <>
+      <GlobalStyles />
+      <Box
+        sx={{
+          width,
+          height,
+          position: 'relative',
+          overflow: 'hidden',
+          transform: 'translateZ(0)'
+        }}
+      >
+        <Renderer {...renderer} />
+        <UiOverlay />
+      </Box>
+    </>
+  );
+}
 
 const App = ({
   initialData,
@@ -28,9 +72,6 @@ const App = ({
     return state.actions;
   });
   const initialDataManager = useInitialDataManager();
-  const model = useModelStore((state) => {
-    return modelFromModelStore(state);
-  });
 
   const { load } = initialDataManager;
 
@@ -51,33 +92,18 @@ const App = ({
   }, []);
 
   useEffect(() => {
-    if (!initialDataManager.isReady || !onModelUpdated) return;
-
-    onModelUpdated(model);
-  }, [model, initialDataManager.isReady, onModelUpdated]);
-
-  useEffect(() => {
     uiStateActions.setEnableDebugTools(enableDebugTools);
   }, [enableDebugTools, uiStateActions]);
 
   if (!initialDataManager.isReady) return null;
 
   return (
-    <>
-      <GlobalStyles />
-      <Box
-        sx={{
-          width,
-          height,
-          position: 'relative',
-          overflow: 'hidden',
-          transform: 'translateZ(0)'
-        }}
-      >
-        <Renderer {...renderer} />
-        <UiOverlay />
-      </Box>
-    </>
+    <InnerApp
+      width={width}
+      height={height}
+      onModelUpdated={onModelUpdated}
+      renderer={renderer}
+    />
   );
 };
 
