@@ -21,7 +21,7 @@ interface Props {
 export const Node = ({ node, order }: Props) => {
   const modelItem = useModelItem(node.id);
   const { iconComponent } = useIcon(modelItem.icon);
-  const NodeIndicatorComponent = useNodeIndicatorComponent(node.id);
+  const NodeIndicatorComponent = useNodeIndicatorComponent();
 
   const position = useMemo(() => {
     return getTilePosition({

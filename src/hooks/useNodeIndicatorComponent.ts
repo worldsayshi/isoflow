@@ -1,7 +1,7 @@
 import { useUiStateStore } from 'src/stores/uiStateStore';
 import { NodeIndicatorComponentProps } from 'src/types';
 
-export const useNodeIndicatorComponent = (id: string): ((props: NodeIndicatorComponentProps) => JSX.Element) => {
+export const useNodeIndicatorComponent = () => {
   const model = useUiStateStore((state) => {
     return state;
   });
