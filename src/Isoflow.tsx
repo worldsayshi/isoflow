@@ -37,7 +37,7 @@ const InnerApp = ({
     if (!onModelUpdated) return;
 
     onModelUpdated(model, {scene});
-  }, [model, onModelUpdated]);
+  }, [JSON.stringify(model), onModelUpdated]);
   return (
     <>
       <GlobalStyles />
