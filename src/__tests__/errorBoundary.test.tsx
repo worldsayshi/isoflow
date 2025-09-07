@@ -8,6 +8,9 @@ import { initialData as initialDataBasicExample } from '../examples/initialData'
 import { invalidInitialData } from '../__mocks__/testData';
 import { ErrorBoundary } from 'react-error-boundary';
 
+
+const fallback = ({error}: {error: Error}) => <div>Something went wrong: {error.message}</div>;
+
 describe('App and Error Boundary', () => {
 
     test('providing minimal props works', async () => {
@@ -17,7 +20,7 @@ describe('App and Error Boundary', () => {
 
     test.skip('providing example initialData works', async () => {
         render(<Isoflow mainMenuOptions={[]} initialData={initialDataBasicExample} />);
-        expect(screen.getByText('Elvis')).toBeInTheDocument();
+        expect(screen.getByText(/Airport/i)).toBeInTheDocument();
     });
 
     test('providing invalid initialData throws error', async () => {
@@ -29,12 +32,13 @@ describe('App and Error Boundary', () => {
         }
     });
 
-    test.skip('using error boundary works', async () => {
+    test.only('using error boundary works', async () => {
         render(
-            <ErrorBoundary fallback={<div>Something went wrong</div>}>
+            <ErrorBoundary fallbackRender={fallback}>
                 <Isoflow mainMenuOptions={[]} initialData={invalidInitialData} />
             </ErrorBoundary>
         );
-        expect(screen.getByText('Something went wrong.')).toBeInTheDocument();
+        expect(screen.getByText(/Something went wrong/)).toBeInTheDocument();
+        expect(screen.getByText(/non-existant item in the model/)).toBeInTheDocument();
     });
 });

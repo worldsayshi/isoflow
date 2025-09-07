@@ -15,7 +15,7 @@ export default defineConfig({
     include: ['**/*.test.tsx', '**/*.test.ts'],
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/__mocks__/setupTests.js'],
+    setupFiles: ['./src/__mocks__/setupTests.ts'],
     transformMode: {
       web: [/\.[jt]sx?$/],
     },
