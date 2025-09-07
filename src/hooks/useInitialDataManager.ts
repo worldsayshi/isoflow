@@ -41,8 +41,9 @@ export const useInitialDataManager = () => {
         // - not in console but in a modal
         console.error(_initialData);
         console.error(JSON.stringify(validationResult.error.errors));
-        window.alert('There is an error in your model: ' + validationResult.error.errors.map((e) => JSON.stringify(e)).join(', '));
-        return;
+        //window.alert('There is an error in your model: ' + validationResult.error.errors.map((e) => JSON.stringify(e)).join(', '));
+        throw new Error('Invalid initialData: ' + validationResult.error.errors.map((e) => e.message).join(', '));
+        //return;
       }
 
       const initialData = _initialData;

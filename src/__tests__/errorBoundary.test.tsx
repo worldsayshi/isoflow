@@ -7,13 +7,37 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Isoflow } from '../Isoflow';
+import { initialData as initialDataBasicExample } from '../examples/initialData';
+import { invalidInitialData } from '../__mocks__/testData';
+import { ErrorBoundary } from 'react-error-boundary';
 
-describe('Error Boundary', () => {
+describe('App and Error Boundary', () => {
 
     test('providing minimal props works', async () => {
         render(<Isoflow mainMenuOptions={[]} initialData={{ title: 'MyTitle', items: [], views: [], icons: [], colors: [] }} />);
-        // Find element with the title "MyTitle"
         expect(screen.getByText('MyTitle')).toBeInTheDocument();
-        // await screen.getByText('MyTitle');
+    });
+
+    test.skip('providing example initialData works', async () => {
+        render(<Isoflow mainMenuOptions={[]} initialData={initialDataBasicExample} />);
+        expect(screen.getByText('Elvis')).toBeInTheDocument();
+    });
+
+    test('providing invalid initialData throws error', async () => {
+        try {
+            render(<Isoflow mainMenuOptions={[]} initialData={invalidInitialData} />);
+        } catch (e) {
+            expect(e).toBeInstanceOf(Error);
+            expect((e as Error).message).toMatch(/non-existant item in the model/);
+        }
+    });
+
+    test('using error boundary works', async () => {
+        render(
+            <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                <Isoflow mainMenuOptions={[]} initialData={invalidInitialData} />
+            </ErrorBoundary>
+        );
+        expect(screen.getByText('Something went wrong.')).toBeInTheDocument();
     });
 });
