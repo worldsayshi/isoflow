@@ -17,6 +17,6 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['<rootDir>/src/__mocks__/setupTests.js'],
   globals: {
-    PACKAGE_VERSION: '"1.1.1"',
+    PACKAGE_VERSION: JSON.stringify(require("./package.json").version),
   },
 };
