@@ -15,7 +15,8 @@
     "module": "es6",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules", "./dist", "./docs"],
   "include": [
