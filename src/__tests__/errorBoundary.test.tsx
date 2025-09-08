@@ -7,6 +7,7 @@ import { Isoflow } from '../Isoflow';
 import { initialData as initialDataBasicExample } from '../examples/initialData';
 import { invalidInitialData } from '../__mocks__/testData';
 import { ErrorBoundary } from 'react-error-boundary';
+import { renderExpectErrLog } from 'src/__mocks__/expectRenderError';
 
 
 const fallback = ({error}: {error: Error}) => <div>Something went wrong: {error.message}</div>;
@@ -33,11 +34,13 @@ describe('App and Error Boundary', () => {
     });
 
     test.only('using error boundary works', async () => {
-        render(
-            <ErrorBoundary fallbackRender={fallback}>
+        renderExpectErrLog(
+            <ErrorBoundary onError={() => {}} fallbackRender={fallback}>
                 <Isoflow mainMenuOptions={[]} initialData={invalidInitialData} />
-            </ErrorBoundary>
+            </ErrorBoundary>,
+            "Invalid initialData"
         );
+
         expect(screen.getByText(/Something went wrong/)).toBeInTheDocument();
         expect(screen.getByText(/non-existant item in the model/)).toBeInTheDocument();
     });
