@@ -1,5 +1,5 @@
 import { useScene } from 'src/hooks/useScene';
-import type { EditorModeEnum, MainMenuOptions } from './common';
+import type { EditorModeEnum, MainMenuOptions, ToolMenuOptions } from './common';
 import type { Model, ModelItem, ViewItem } from './model';
 import type { RendererProps } from './rendererProps';
 import { Scene } from './scene';
@@ -16,6 +16,7 @@ export type NodeIndicatorComponentProps = {
 export interface IsoflowProps {
   initialData?: InitialData;
   mainMenuOptions?: MainMenuOptions;
+  toolMenuOptions?: ToolMenuOptions;
   nodeIndicatorComponent?: (props: NodeIndicatorComponentProps) => JSX.Element;
   onModelUpdated?: (Model: Model, {scene}: {
     scene: ReturnType<typeof useScene>

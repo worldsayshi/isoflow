@@ -8,7 +8,8 @@ import {
   ViewItem,
   View,
   Rectangle,
-  Colors
+  Colors,
+  ToolMenuOptions
 } from 'src/types';
 import { CoordsUtils } from 'src/utils';
 import { customVars } from './styles/theme';
@@ -102,6 +103,14 @@ export const MAIN_MENU_OPTIONS: MainMenuOptions = [
   'LINK.DISCORD',
   'LINK.GITHUB',
   'VERSION'
+];
+export const TOOL_MENU_OPTIONS: ToolMenuOptions = [
+  'SELECT',
+  'PAN',
+  'ADD_ITEM',
+  'RECTANGLE',
+  'CONNECTOR',
+  'TEXT'
 ];
 
 export const DEFAULT_ICON: Icon = {

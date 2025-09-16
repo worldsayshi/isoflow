@@ -10,7 +10,7 @@ import { GlobalStyles } from 'src/styles/GlobalStyles';
 import { Renderer } from 'src/components/Renderer/Renderer';
 import { UiOverlay } from 'src/components/UiOverlay/UiOverlay';
 import { UiStateProvider, useUiStateStore } from 'src/stores/uiStateStore';
-import { INITIAL_DATA, MAIN_MENU_OPTIONS } from 'src/config';
+import { INITIAL_DATA, MAIN_MENU_OPTIONS, TOOL_MENU_OPTIONS } from 'src/config';
 import { useInitialDataManager } from 'src/hooks/useInitialDataManager';
 import { useScene } from './hooks/useScene';
 
@@ -60,6 +60,7 @@ const InnerApp = ({
 const App = ({
   initialData,
   mainMenuOptions = MAIN_MENU_OPTIONS,
+  toolMenuOptions = TOOL_MENU_OPTIONS,
   nodeIndicatorComponent = () => <></>,
   width = '100%',
   height = '100%',
@@ -83,7 +84,8 @@ const App = ({
     uiStateActions.setEditorMode(editorMode);
     uiStateActions.setMainMenuOptions(mainMenuOptions);
     uiStateActions.setNodeIndicatorComponent(nodeIndicatorComponent);
-  }, [editorMode, uiStateActions, mainMenuOptions]);
+    uiStateActions.setToolMenuOptions(toolMenuOptions);
+  }, [editorMode, uiStateActions, mainMenuOptions, toolMenuOptions]);
 
   useEffect(() => {
     return () => {

@@ -1,4 +1,4 @@
-import { Coords, EditorModeEnum, MainMenuOptions } from './common';
+import { Coords, EditorModeEnum, MainMenuOptions, ToolMenuOptions } from './common';
 import { Icon, ModelItem, } from './model';
 import { ItemReference } from './scene';
 
@@ -134,6 +134,7 @@ export type LayerOrderingAction = keyof typeof LayerOrderingActionOptions;
 export interface UiState {
   view: string;
   mainMenuOptions: MainMenuOptions;
+  toolMenuOptions: ToolMenuOptions;
   nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element;
   editorMode: keyof typeof EditorModeEnum;
   iconCategoriesState: IconCollectionState[];
@@ -152,6 +153,7 @@ export interface UiState {
 export interface UiStateActions {
   setView: (view: string) => void;
   setMainMenuOptions: (options: MainMenuOptions) => void;
+  setToolMenuOptions: (options: ToolMenuOptions) => void;
   setNodeIndicatorComponent: (nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element) => void;
   setEditorMode: (mode: keyof typeof EditorModeEnum) => void;
   setIconCategoriesState: (iconCategoriesState: IconCollectionState[]) => void;

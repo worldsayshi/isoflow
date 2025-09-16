@@ -42,3 +42,14 @@ export const MainMenuOptionsEnum = {
 } as const;
 
 export type MainMenuOptions = (keyof typeof MainMenuOptionsEnum)[];
+
+export const ToolMenuOptionsEnum = {
+  SELECT: 'SELECT',
+  PAN: 'PAN',
+  ADD_ITEM: 'ADD_ITEM',
+  RECTANGLE: 'RECTANGLE',
+  CONNECTOR: 'CONNECTOR',
+  TEXT: 'TEXT',
+} as const;
+
+export type ToolMenuOptions = (keyof typeof ToolMenuOptionsEnum)[];
