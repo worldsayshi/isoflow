@@ -17,6 +17,7 @@ const initialState = () => {
       view: '',
       mainMenuOptions: [],
       toolMenuOptions: [],
+      nodeSettingsOptions: [],
       nodeIndicatorComponent: () => <></>,
       editorMode: 'EXPLORABLE_READONLY',
       mode: getStartingMode('EXPLORABLE_READONLY'),
@@ -41,6 +42,9 @@ const initialState = () => {
         },
         setToolMenuOptions: (toolMenuOptions) => {
           set({ toolMenuOptions });
+        },
+        setNodeSettingsOptions: (nodeSettingsOptions) => {
+          set({ nodeSettingsOptions });
         },
         setNodeIndicatorComponent: (nodeIndicatorComponent) => {
           set({ nodeIndicatorComponent });

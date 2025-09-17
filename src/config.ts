@@ -9,7 +9,8 @@ import {
   View,
   Rectangle,
   Colors,
-  ToolMenuOptions
+  ToolMenuOptions,
+  NodeSettingsOptions
 } from 'src/types';
 import { CoordsUtils } from 'src/utils';
 import { customVars } from './styles/theme';
@@ -111,6 +112,13 @@ export const TOOL_MENU_OPTIONS: ToolMenuOptions = [
   'RECTANGLE',
   'CONNECTOR',
   'TEXT'
+];
+
+export const NODE_SETTINGS_OPTIONS: NodeSettingsOptions = [
+  'NAME',
+  'DESCRIPTION',
+  'LABEL_HEIGHT',
+  'DELETE',
 ];
 
 export const DEFAULT_ICON: Icon = {

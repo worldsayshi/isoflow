@@ -53,3 +53,12 @@ export const ToolMenuOptionsEnum = {
 } as const;
 
 export type ToolMenuOptions = (keyof typeof ToolMenuOptionsEnum)[];
+
+export const NodeSettingsOptionsEnum = {
+  NAME: 'NAME',
+  DESCRIPTION: 'DESCRIPTION',
+  LABEL_HEIGHT: 'LABEL_HEIGHT',
+  DELETE: 'DELETE',
+} as const;
+
+export type NodeSettingsOptions = (keyof typeof NodeSettingsOptionsEnum)[];
