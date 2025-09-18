@@ -136,6 +136,7 @@ export interface UiState {
   mainMenuOptions: MainMenuOptions;
   toolMenuOptions: ToolMenuOptions;
   nodeSettingsOptions: NodeSettingsOptions;
+  hiddenIcons: string[];
   nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element;
   editorMode: keyof typeof EditorModeEnum;
   iconCategoriesState: IconCollectionState[];
@@ -156,6 +157,7 @@ export interface UiStateActions {
   setMainMenuOptions: (options: MainMenuOptions) => void;
   setToolMenuOptions: (options: ToolMenuOptions) => void;
   setNodeSettingsOptions: (options: NodeSettingsOptions) => void;
+  setHiddenIcons: (hiddenIcons: string[]) => void;
   setNodeIndicatorComponent: (nodeIndicatorComponent: (props: { item: ModelItem }) => JSX.Element) => void;
   setEditorMode: (mode: keyof typeof EditorModeEnum) => void;
   setIconCategoriesState: (iconCategoriesState: IconCollectionState[]) => void;
