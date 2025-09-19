@@ -19,6 +19,7 @@ const initialState = () => {
       toolMenuOptions: [],
       nodeSettingsOptions: [],
       hiddenIcons: [],
+      extraToolMenuOptions: null,
       nodeIndicatorComponent: () => <></>,
       editorMode: 'EXPLORABLE_READONLY',
       mode: getStartingMode('EXPLORABLE_READONLY'),
@@ -49,6 +50,9 @@ const initialState = () => {
         },
         setHiddenIcons: (hiddenIcons) => {
           set({ hiddenIcons });
+        },
+        setExtraToolMenuOptions: (extraToolMenuOptions) => {
+          set({ extraToolMenuOptions });
         },
         setNodeIndicatorComponent: (nodeIndicatorComponent) => {
           set({ nodeIndicatorComponent });

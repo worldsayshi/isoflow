@@ -29,6 +29,9 @@ export const ToolMenu = () => {
   const toolMenuOptions = useUiStateStore((state) => {
     return state.toolMenuOptions;
   });
+  const extraToolMenuOptions = useUiStateStore((state) => {
+    return state.extraToolMenuOptions;
+  });
 
   const createTextBoxProxy = useCallback(() => {
     const textBoxId = generateId();
@@ -53,6 +56,7 @@ export const ToolMenu = () => {
   return (
     <UiElement>
       <Stack direction="row">
+        {extraToolMenuOptions}
         {toolMenuOptions.includes('SELECT') && (<IconButton
           name="Select"
           Icon={<NearMeIcon />}

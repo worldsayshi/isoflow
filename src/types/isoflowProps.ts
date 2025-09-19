@@ -19,6 +19,7 @@ export interface IsoflowProps {
   toolMenuOptions?: ToolMenuOptions;
   nodeSettingsOptions?: NodeSettingsOptions;
   hiddenIcons?: string[];
+  extraToolMenuOptions?: React.ReactNode;
   nodeIndicatorComponent?: (props: NodeIndicatorComponentProps) => JSX.Element;
   onModelUpdated?: (Model: Model, {scene}: {
     scene: ReturnType<typeof useScene>

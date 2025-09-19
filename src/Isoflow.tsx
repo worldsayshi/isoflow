@@ -63,6 +63,7 @@ const App = ({
   toolMenuOptions = TOOL_MENU_OPTIONS,
   nodeSettingsOptions = NODE_SETTINGS_OPTIONS,
   hiddenIcons = [],
+  extraToolMenuOptions = null,
   nodeIndicatorComponent = () => <></>,
   width = '100%',
   height = '100%',
@@ -89,7 +90,8 @@ const App = ({
     uiStateActions.setToolMenuOptions(toolMenuOptions);
     uiStateActions.setNodeSettingsOptions(nodeSettingsOptions);
     uiStateActions.setHiddenIcons(hiddenIcons);
-  }, [editorMode, uiStateActions, mainMenuOptions, toolMenuOptions]);
+    uiStateActions.setExtraToolMenuOptions(extraToolMenuOptions);
+  }, [editorMode, uiStateActions, mainMenuOptions, toolMenuOptions, nodeSettingsOptions, hiddenIcons, extraToolMenuOptions, nodeIndicatorComponent]);
 
   useEffect(() => {
     return () => {
